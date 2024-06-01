@@ -1,0 +1,61 @@
+version: "3"
+services:
+  kali:
+    container_name: kali
+    build: ./kali/
+    tty: true
+    ports:
+      - 5901:5901
+      - 5555:5555
+      - 4444:4444
+      - 8060:8060
+      - 8070:8070
+    volumes:
+      - ./kali/work:/root/work
+      - ./kali/config/:/root/config
+  metasploitable2:
+    image: tleemcjr/metasploitable2
+    container_name: metasploitable2
+    tty: true
+    ports:
+      - 8010:80
+      #- 21:21
+      #- 22:22
+      #- 23:23
+      #- 25:25
+      #- 111:111
+      #- 139:139
+      #- 445:445
+      #- 512:512
+      #- 513:513
+      #- 514:514
+      #- 1099:1099
+      #- 1524:1524
+      #- 2121:2121
+      #- 3307:3306
+      #- 5432:5432
+      #- 6667:6667
+  bwapp:
+    image: raesene/bwapp
+    container_name: bwapp
+    tty: true
+    ports:
+      - 8020:80
+  badstore:
+    image: jvhoof/badstore-docker
+    container_name: badstore
+    tty: true
+    ports:
+      - 8030:80
+  dvwa:
+    image: vulnerables/web-dvwa
+    container_name: dvwa
+    tty: true
+    ports:
+      - 8040:80
+  juiceshop:
+    image: bkimminich/juice-shop
+    container_name: juice-shop
+    tty: true
+    ports:
+      - 8050:3000
