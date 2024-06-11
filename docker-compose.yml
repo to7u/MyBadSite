@@ -38,9 +38,12 @@ services:
   bwapp:
     image: raesene/bwapp
     container_name: bwapp
+    restart: always
     tty: true
     ports:
       - 8020:80
+    volumes:
+      - ./app:/app
   badstore:
     image: jvhoof/badstore-docker
     container_name: badstore
